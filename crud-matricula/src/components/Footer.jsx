@@ -1,7 +1,12 @@
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
-const accesos = ['Alumnos', 'Secretaría', 'Matrículas', 'Carreras', 'Conceptos de Pago'];
-const soporte = ['Manual de usuario', 'Contacto', 'Versión 1.0.0'];
+const accesos = [
+  { label: 'Alumnos', to: '/alumnos' },
+  { label: 'Secretaría', to: '/secretaria' },
+  { label: 'Matrículas', to: '/matriculas' },
+  { label: 'Carreras', to: '/carreras' },
+];
 
 function Footer() {
   return (
@@ -17,20 +22,9 @@ function Footer() {
         <div className="footer__col">
           <h4 className="footer__col-title">Accesos</h4>
           <ul className="footer__list">
-            {accesos.map((link) => (
-              <li key={link}>
-                <a href="#top" className="footer__link">{link}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="footer__col">
-          <h4 className="footer__col-title">Soporte</h4>
-          <ul className="footer__list">
-            {soporte.map((link) => (
-              <li key={link}>
-                <a href="#top" className="footer__link">{link}</a>
+            {accesos.map(({ label, to }) => (
+              <li key={label}>
+                <Link to={to} className="footer__link">{label}</Link>
               </li>
             ))}
           </ul>

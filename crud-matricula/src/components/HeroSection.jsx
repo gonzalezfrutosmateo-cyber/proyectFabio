@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './HeroSection.css';
 
 function HeroSection() {
@@ -9,7 +10,7 @@ function HeroSection() {
         <p className="hero__subtitle">
           Registrá, consultá y administrá las matrículas de tus alumnos desde un solo lugar.
         </p>
-        <a href="#categorias" className="hero__cta">Ver Matrículas</a>
+        <Link to="/matriculas" className="hero__cta">Ver Matrículas</Link>
       </div>
     </section>
   );

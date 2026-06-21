@@ -16,15 +16,15 @@ const columnas = [
 ];
 
 const campos = [
-  { key: 'numero', label: 'N° Matrícula', tipo: 'text' },
-  { key: 'fecha', label: 'Fecha', tipo: 'date' },
-  { key: 'codigoAlumno', label: 'Código Alumno', tipo: 'text' },
-  { key: 'codigoSecretaria', label: 'Código Secretaria', tipo: 'text' },
-  { key: 'codigoCarrera', label: 'Código Carrera', tipo: 'text' },
-  { key: 'numeroRecibo', label: 'N° Recibo', tipo: 'text' },
-  { key: 'fechaRecibo', label: 'Fecha Recibo', tipo: 'date' },
-  { key: 'total', label: 'Total $', tipo: 'number' },
-  { key: 'codigoConcepto', label: 'Código Concepto', tipo: 'text' },
+  { key: 'numero',           label: 'N° Matrícula',    tipo: 'code'   },
+  { key: 'fecha',            label: 'Fecha',            tipo: 'date'   },
+  { key: 'codigoAlumno',     label: 'Código Alumno',    tipo: 'code'   },
+  { key: 'codigoSecretaria', label: 'Código Secretaria', tipo: 'code'  },
+  { key: 'codigoCarrera',    label: 'Código Carrera',   tipo: 'code'   },
+  { key: 'numeroRecibo',     label: 'N° Recibo',        tipo: 'code'   },
+  { key: 'fechaRecibo',      label: 'Fecha Recibo',     tipo: 'date'   },
+  { key: 'total',            label: 'Total $',          tipo: 'number' },
+  { key: 'codigoConcepto',   label: 'Código Concepto',  tipo: 'code'   },
 ];
 
 export default function MatriculasPage() {

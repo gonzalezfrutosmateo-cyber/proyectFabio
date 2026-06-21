@@ -12,8 +12,8 @@ const columnas = [
 ];
 
 const campos = [
-  { key: 'codigo', label: 'Código', tipo: 'text' },
-  { key: 'nombre', label: 'Nombre de carrera', tipo: 'text' },
+  { key: 'codigo', label: 'Código',           tipo: 'code' },
+  { key: 'nombre', label: 'Nombre de carrera', tipo: 'name' },
 ];
 
 export default function CarrerasPage() {

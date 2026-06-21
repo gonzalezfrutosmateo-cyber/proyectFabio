@@ -8,7 +8,6 @@ const navLinks = [
   { label: 'Secretaría', to: '/secretaria' },
   { label: 'Matrículas', to: '/matriculas' },
   { label: 'Carreras', to: '/carreras' },
-  { label: 'Reportes', to: '/reportes' },
 ];
 
 function Navbar() {
@@ -46,10 +45,6 @@ function Navbar() {
               </li>
             ))}
           </ul>
-
-          <button type="button" className="navbar__cta" onClick={() => {}}>
-            + Nueva Matrícula
-          </button>
         </div>
       </div>
     </nav>

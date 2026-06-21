@@ -15,11 +15,11 @@ const columnas = [
 ];
 
 const campos = [
-  { key: 'codigo', label: 'Código', tipo: 'text' },
-  { key: 'nombre', label: 'Nombre', tipo: 'text' },
-  { key: 'apellido', label: 'Apellido', tipo: 'text' },
-  { key: 'direccion', label: 'Dirección', tipo: 'text' },
-  { key: 'telefono', label: 'Teléfono', tipo: 'text' },
+  { key: 'codigo',    label: 'Código',    tipo: 'code'    },
+  { key: 'nombre',    label: 'Nombre',    tipo: 'name'    },
+  { key: 'apellido',  label: 'Apellido',  tipo: 'name'    },
+  { key: 'direccion', label: 'Dirección', tipo: 'address' },
+  { key: 'telefono',  label: 'Teléfono',  tipo: 'phone'   },
 ];
 
 export default function AlumnosPage() {
