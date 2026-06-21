@@ -5,11 +5,11 @@ function HeroSection() {
     <section className="hero" id="top">
       <div className="hero__overlay" />
       <div className="hero__content">
-        <h1 className="hero__title">Sistema de Matrícula</h1>
+        <h1 className="hero__title">Sistema de Gestión de Matrículas</h1>
         <p className="hero__subtitle">
-          Gestioná las matrículas de forma simple y eficiente.
+          Registrá, consultá y administrá las matrículas de tus alumnos desde un solo lugar.
         </p>
-        <a href="#categorias" className="hero__cta">Comenzar</a>
+        <a href="#categorias" className="hero__cta">Ver Matrículas</a>
       </div>
     </section>
   );

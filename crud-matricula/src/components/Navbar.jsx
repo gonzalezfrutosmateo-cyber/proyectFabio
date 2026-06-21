@@ -1,32 +1,18 @@
 import { useState, useEffect } from 'react';
 import './Navbar.css';
 
-const navConfig = [
-  {
-    label: 'Somos Instituto',
-    items: ['Institucional', 'Autoridades', 'Docentes', 'Graduados', 'Extensión', 'Donaciones'],
-  },
-  {
-    label: 'Oferta académica',
-    items: ['Carreras de grado', 'Posgrado', 'Doctorado', 'Educación Ejecutiva'],
-  },
-  {
-    label: 'Investigación',
-    items: ['Departamento de Investigación'],
-  },
-  { label: 'Negocios' },
-  { label: 'Becas' },
-  { label: 'Campus' },
-  {
-    label: 'Índice e Informes',
-    items: ['Índice de Innovación', 'Informes'],
-  },
+const navLinks = [
+  { label: 'Inicio', href: '/' },
+  { label: 'Alumnos', href: '/alumnos' },
+  { label: 'Secretaría', href: '/secretaria' },
+  { label: 'Matrículas', href: '/matriculas' },
+  { label: 'Carreras', href: '/carreras' },
+  { label: 'Reportes', href: '/reportes' },
 ];
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -35,14 +21,10 @@ function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const toggleDropdown = (index) => {
-    setOpenDropdown((current) => (current === index ? null : index));
-  };
-
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar__inner">
-        <a href="#top" className="navbar__logo">Instituto Buena Onda</a>
+        <a href="/" className="navbar__logo">MatriculaSystem</a>
 
         <button
           className={`navbar__hamburger ${mobileOpen ? 'is-open' : ''}`}
@@ -57,39 +39,16 @@ function Navbar() {
 
         <div className={`navbar__menu ${mobileOpen ? 'is-open' : ''}`}>
           <ul className="navbar__links">
-            {navConfig.map((item, index) => (
-              <li
-                key={item.label}
-                className={`navbar__item ${item.items ? 'has-dropdown' : ''} ${
-                  openDropdown === index ? 'is-open' : ''
-                }`}
-              >
-                {item.items ? (
-                  <>
-                    <button
-                      type="button"
-                      className="navbar__link"
-                      onClick={() => toggleDropdown(index)}
-                      aria-expanded={openDropdown === index}
-                    >
-                      {item.label} <span className="navbar__caret">▾</span>
-                    </button>
-                    <ul className="navbar__dropdown">
-                      {item.items.map((sub) => (
-                        <li key={sub}>
-                          <a href="#top" className="navbar__dropdown-link">{sub}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <a href="#top" className="navbar__link">{item.label}</a>
-                )}
+            {navLinks.map((item) => (
+              <li className="navbar__item" key={item.label}>
+                <a href={item.href} className="navbar__link">{item.label}</a>
               </li>
             ))}
           </ul>
 
-          <a href="#top" className="navbar__donate">QUIERO DONAR</a>
+          <button type="button" className="navbar__cta" onClick={() => {}}>
+            + Nueva Matrícula
+          </button>
         </div>
       </div>
     </nav>

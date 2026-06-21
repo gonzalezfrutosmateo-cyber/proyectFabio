@@ -25,6 +25,12 @@
   box-shadow: 0 14px 28px rgba(26, 26, 46, 0.28);
 }
 
+.category-card__icon {
+  display: block;
+  color: #4a9eff;
+  margin-bottom: 14px;
+}
+
 .category-card__title {
   margin: 0;
   font-size: 22px;
