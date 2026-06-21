@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const navLinks = [
-  { label: 'Inicio', href: '/' },
-  { label: 'Alumnos', href: '/alumnos' },
-  { label: 'Secretaría', href: '/secretaria' },
-  { label: 'Matrículas', href: '/matriculas' },
-  { label: 'Carreras', href: '/carreras' },
-  { label: 'Reportes', href: '/reportes' },
+  { label: 'Inicio', to: '/' },
+  { label: 'Alumnos', to: '/alumnos' },
+  { label: 'Secretaría', to: '/secretaria' },
+  { label: 'Matrículas', to: '/matriculas' },
+  { label: 'Carreras', to: '/carreras' },
+  { label: 'Reportes', to: '/reportes' },
 ];
 
 function Navbar() {
@@ -24,7 +25,7 @@ function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar__inner">
-        <a href="/" className="navbar__logo">MatriculaSystem</a>
+        <Link to="/" className="navbar__logo">MatriculaSystem</Link>
 
         <button
           className={`navbar__hamburger ${mobileOpen ? 'is-open' : ''}`}
@@ -41,7 +42,7 @@ function Navbar() {
           <ul className="navbar__links">
             {navLinks.map((item) => (
               <li className="navbar__item" key={item.label}>
-                <a href={item.href} className="navbar__link">{item.label}</a>
+                <Link to={item.to} className="navbar__link">{item.label}</Link>
               </li>
             ))}
           </ul>

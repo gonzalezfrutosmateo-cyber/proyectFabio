@@ -1,0 +1,107 @@
+.tabla-wrapper {
+  overflow-x: auto;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  font-size: 14px;
+}
+
+.tabla thead tr {
+  background: #1a1a2e;
+}
+
+.tabla thead th {
+  color: #ffffff;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tabla tbody td {
+  padding: 11px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #333333;
+}
+
+.tabla tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.fila-par td {
+  background: #ffffff;
+}
+
+.fila-impar td {
+  background: #f9f9f9;
+}
+
+.tabla__acciones {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-editar,
+.btn-eliminar {
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 4px;
+  transition: filter 0.2s ease;
+  color: #ffffff;
+}
+
+.btn-editar {
+  background: #4a9eff;
+}
+
+.btn-editar:hover {
+  filter: brightness(0.85);
+}
+
+.btn-eliminar {
+  background: #e53e3e;
+}
+
+.btn-eliminar:hover {
+  filter: brightness(0.85);
+}
+
+.tabla__vacia {
+  background: #ffffff !important;
+  padding: 0 !important;
+}
+
+.tabla__vacia-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 20px;
+  color: #888888;
+}
+
+.tabla__vacia-icono {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.tabla__vacia-inner p {
+  margin: 0;
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .btn-editar,
+  .btn-eliminar {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
