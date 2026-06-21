@@ -3,6 +3,7 @@ import { useCRUD } from '../hooks/useCRUD';
 import TablaGenerica from '../components/TablaGenerica';
 import Modal from '../components/Modal';
 import Toast from '../components/Toast';
+import ReciboModal from '../components/ReciboModal';
 import datosIniciales from '../data/matriculas.json';
 import './Page.css';
 
@@ -16,35 +17,52 @@ const columnas = [
 ];
 
 const campos = [
-  { key: 'numero',           label: 'N° Matrícula',    tipo: 'code'   },
-  { key: 'fecha',            label: 'Fecha',            tipo: 'date'   },
-  { key: 'codigoAlumno',     label: 'Código Alumno',    tipo: 'code'   },
-  { key: 'codigoSecretaria', label: 'Código Secretaria', tipo: 'code'  },
-  { key: 'codigoCarrera',    label: 'Código Carrera',   tipo: 'code'   },
-  { key: 'numeroRecibo',     label: 'N° Recibo',        tipo: 'code'   },
-  { key: 'fechaRecibo',      label: 'Fecha Recibo',     tipo: 'date'   },
-  { key: 'total',            label: 'Total $',          tipo: 'number' },
-  { key: 'codigoConcepto',   label: 'Código Concepto',  tipo: 'code'   },
+  { key: 'numero',           label: 'N° Matrícula',     tipo: 'code'   },
+  { key: 'fecha',            label: 'Fecha',             tipo: 'date'   },
+  { key: 'codigoAlumno',     label: 'Código Alumno',     tipo: 'code'   },
+  { key: 'codigoSecretaria', label: 'Código Secretaria', tipo: 'code'   },
+  { key: 'codigoCarrera',    label: 'Código Carrera',    tipo: 'code'   },
+  { key: 'numeroRecibo',     label: 'N° Recibo',         tipo: 'code'   },
+  { key: 'fechaRecibo',      label: 'Fecha Recibo',      tipo: 'date'   },
+  { key: 'total',            label: 'Total $',           tipo: 'number' },
+  { key: 'codigoConcepto',   label: 'Código Concepto',   tipo: 'code'   },
 ];
 
 export default function MatriculasPage() {
   const { datos, agregar, editar, eliminar } = useCRUD(datosIniciales);
   const [modalAbierto, setModalAbierto] = useState(false);
   const [itemEditando, setItemEditando] = useState(null);
+  const [reciboAbierto, setReciboAbierto] = useState(false);
+  const [matriculaRecibo, setMatriculaRecibo] = useState(null);
   const [busqueda, setBusqueda] = useState('');
+  const [filtroEstado, setFiltroEstado] = useState('todas');
   const [toast, setToast] = useState({ visible: false, mensaje: '' });
 
   const mostrarToast = (mensaje) => setToast({ visible: true, mensaje });
   const ocultarToast = useCallback(() => setToast({ visible: false, mensaje: '' }), []);
 
-  const datosFiltrados = datos.filter((item) =>
-    Object.values(item).some((valor) =>
-      String(valor).toLowerCase().includes(busqueda.toLowerCase())
-    )
-  );
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+
+  const datosFiltrados = datos
+    .filter((item) => {
+      if (filtroEstado === 'todas') return true;
+      const fecha = new Date(item.fecha + 'T00:00:00');
+      return filtroEstado === 'vigentes' ? fecha >= hoy : fecha < hoy;
+    })
+    .filter((item) =>
+      Object.values(item).some((valor) =>
+        String(valor).toLowerCase().includes(busqueda.toLowerCase())
+      )
+    );
 
   const handleAgregar = () => { setItemEditando(null); setModalAbierto(true); };
   const handleEditar = (item) => { setItemEditando(item); setModalAbierto(true); };
+
+  const handleVerRecibo = (item) => {
+    setMatriculaRecibo(item);
+    setReciboAbierto(true);
+  };
 
   const handleEliminar = (id) => {
     if (window.confirm('¿Estás seguro de que querés eliminar este registro?')) {
@@ -63,6 +81,10 @@ export default function MatriculasPage() {
     }
     setModalAbierto(false);
   };
+
+  const accionesExtra = [
+    { label: '🧾 Ver Recibo', onClick: handleVerRecibo, className: 'btn-recibo' },
+  ];
 
   return (
     <div className="page">
@@ -85,6 +107,17 @@ export default function MatriculasPage() {
             onChange={(e) => setBusqueda(e.target.value)}
           />
         </div>
+        <div className="page__filtro-estado">
+          {['todas', 'vigentes', 'vencidas'].map((estado) => (
+            <button
+              key={estado}
+              className={`page__filtro-btn ${filtroEstado === estado ? 'activo' : ''} page__filtro-btn--${estado}`}
+              onClick={() => setFiltroEstado(estado)}
+            >
+              {estado.charAt(0).toUpperCase() + estado.slice(1)}
+            </button>
+          ))}
+        </div>
         <button className="page__btn-agregar" onClick={handleAgregar}>+ Agregar nuevo</button>
       </div>
 
@@ -93,6 +126,7 @@ export default function MatriculasPage() {
         datos={datosFiltrados}
         onEditar={handleEditar}
         onEliminar={handleEliminar}
+        accionesExtra={accionesExtra}
       />
 
       <Modal
@@ -102,6 +136,12 @@ export default function MatriculasPage() {
         titulo={itemEditando ? 'Editar Matrícula' : 'Agregar Matrícula'}
         campos={campos}
         datosIniciales={itemEditando}
+      />
+
+      <ReciboModal
+        isOpen={reciboAbierto}
+        onClose={() => setReciboAbierto(false)}
+        matricula={matriculaRecibo}
       />
 
       <Toast mensaje={toast.mensaje} visible={toast.visible} onOcultar={ocultarToast} />

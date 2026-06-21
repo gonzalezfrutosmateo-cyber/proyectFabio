@@ -30,10 +30,6 @@ function Footer() {
           </ul>
         </div>
       </div>
-
-      <div className="footer__copyright">
-        © 2025 MatriculaSystem — Sistema de Gestión Académica
-      </div>
     </footer>
   );
 }

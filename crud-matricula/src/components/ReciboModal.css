@@ -1,0 +1,195 @@
+.recibo-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.recibo {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 36px 40px 28px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+  font-family: inherit;
+}
+
+/* Header */
+.recibo__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.recibo__institucion {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recibo__logo-text {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+
+.recibo__subtitulo {
+  font-size: 11px;
+  color: #888888;
+}
+
+.recibo__titulo-bloque {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recibo__titulo {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #1a1a2e;
+  letter-spacing: 0.06em;
+}
+
+.recibo__numero {
+  font-size: 13px;
+  font-weight: 700;
+  color: #4a9eff;
+}
+
+/* Divider */
+.recibo__divider {
+  height: 1px;
+  background: #e8e8e8;
+  margin: 16px 0;
+}
+
+/* Sección */
+.recibo__seccion-titulo {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888888;
+  margin-bottom: 12px;
+}
+
+.recibo__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+  margin-bottom: 4px;
+}
+
+.recibo__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.recibo__etiqueta {
+  font-size: 11px;
+  color: #999999;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.recibo__valor {
+  font-size: 14px;
+  color: #1a1a2e;
+  font-weight: 600;
+}
+
+/* Total */
+.recibo__total-bloque {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a2e;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 20px 0 0;
+}
+
+.recibo__total-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #9fb6d4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.recibo__total-valor {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+/* Firma */
+.recibo__firma-zona {
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+  margin: 24px 0 8px;
+}
+
+.recibo__firma {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  font-size: 11px;
+  color: #999999;
+}
+
+.recibo__firma-linea {
+  width: 100%;
+  height: 1px;
+  border-top: 1px dashed #cccccc;
+}
+
+.recibo__emision {
+  text-align: center;
+  font-size: 11px;
+  color: #bbbbbb;
+  margin: 12px 0 0;
+}
+
+/* Acciones */
+.recibo__acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.recibo__btn-cerrar {
+  background: #eeeeee;
+  color: #333333;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.recibo__btn-cerrar:hover {
+  background: #dddddd;
+}
+

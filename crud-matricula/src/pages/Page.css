@@ -65,6 +65,49 @@
   border-color: #4a9eff;
 }
 
+.page__filtro-estado {
+  display: flex;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.page__filtro-btn {
+  background: #ffffff;
+  border: none;
+  border-right: 1px solid #dddddd;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  color: #555555;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.page__filtro-btn:last-child {
+  border-right: none;
+}
+
+.page__filtro-btn:hover {
+  background: #f0f0f0;
+}
+
+.page__filtro-btn.activo.page__filtro-btn--todas {
+  background: #1a1a2e;
+  color: #ffffff;
+}
+
+.page__filtro-btn.activo.page__filtro-btn--vigentes {
+  background: #38a169;
+  color: #ffffff;
+}
+
+.page__filtro-btn.activo.page__filtro-btn--vencidas {
+  background: #e53e3e;
+  color: #ffffff;
+}
+
 .page__btn-agregar {
   background: #4a9eff;
   color: #ffffff;

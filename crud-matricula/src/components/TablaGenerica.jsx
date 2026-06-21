@@ -1,6 +1,6 @@
 import './TablaGenerica.css';
 
-function TablaGenerica({ columnas, datos, onEditar, onEliminar }) {
+function TablaGenerica({ columnas, datos, onEditar, onEliminar, accionesExtra = [] }) {
   return (
     <div className="tabla-wrapper">
       <table className="tabla">
@@ -20,6 +20,9 @@ function TablaGenerica({ columnas, datos, onEditar, onEliminar }) {
                   <td key={col.key}>{item[col.key]}</td>
                 ))}
                 <td className="tabla__acciones">
+                  {accionesExtra.map(({ label, onClick, className }) => (
+                    <button key={label} className={className} onClick={() => onClick(item)}>{label}</button>
+                  ))}
                   <button className="btn-editar" onClick={() => onEditar(item)}>Editar</button>
                   <button className="btn-eliminar" onClick={() => onEliminar(item.id)}>Eliminar</button>
                 </td>

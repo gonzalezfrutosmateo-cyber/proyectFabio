@@ -75,6 +75,22 @@
   filter: brightness(0.85);
 }
 
+.btn-recibo {
+  background: #38a169;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 4px;
+  transition: filter 0.2s ease;
+}
+
+.btn-recibo:hover {
+  filter: brightness(0.85);
+}
+
 .tabla__vacia {
   background: #ffffff !important;
   padding: 0 !important;
