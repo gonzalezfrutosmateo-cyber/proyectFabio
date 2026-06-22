@@ -1,31 +1,48 @@
 .recibo-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.75);
   z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  backdrop-filter: blur(6px);
+  animation: overlayIn 0.25s var(--ease) both;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .recibo {
-  background: #ffffff;
+  background: var(--surface);
+  border: 1px solid var(--border2);
   border-radius: 12px;
-  padding: 36px 40px 28px;
+  padding: 32px 36px 28px;
   width: 100%;
-  max-width: 560px;
+  max-width: 540px;
   max-height: 92vh;
   overflow-y: auto;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
-  font-family: inherit;
+  font-family: 'Inter', sans-serif;
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 24px 80px rgba(0, 0, 0, 0.65),
+    0 0 100px rgba(45, 212, 191, 0.06);
+  animation: modalIn 0.35s var(--ease) both;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
 }
 
 .recibo__header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .recibo__institucion {
@@ -35,14 +52,19 @@
 }
 
 .recibo__logo-text {
-  font-size: 18px;
-  font-weight: 800;
-  color: #1a1a2e;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
 }
 
 .recibo__subtitulo {
-  font-size: 11px;
-  color: #888888;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.06em;
 }
 
 .recibo__titulo-bloque {
@@ -54,67 +76,79 @@
 
 .recibo__titulo {
   margin: 0;
-  font-size: 16px;
-  font-weight: 800;
-  color: #1a1a2e;
-  letter-spacing: 0.06em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text3);
 }
 
 .recibo__numero {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
   font-weight: 700;
-  color: #4a9eff;
+  color: var(--teal);
+  letter-spacing: 0.06em;
 }
 
 .recibo__divider {
   height: 1px;
-  background: #e8e8e8;
-  margin: 16px 0;
+  background: var(--border);
+  margin: 18px 0;
 }
 
 .recibo__seccion-titulo {
-  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #888888;
-  margin-bottom: 12px;
+  color: var(--text3);
+  margin-bottom: 14px;
 }
 
 .recibo__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px 24px;
+  gap: 14px 28px;
   margin-bottom: 4px;
 }
 
 .recibo__campo {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
-.recibo__campo--total {
-  margin-top: 8px;
-}
+.recibo__campo--total { margin-top: 4px; }
 
 .recibo__etiqueta {
-  font-size: 11px;
-  color: #999999;
-  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--text3);
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.12em;
 }
 
 .recibo__valor {
-  font-size: 14px;
-  color: #1a1a2e;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--text1);
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .recibo__campo--total .recibo__valor {
-  font-size: 20px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 28px;
   font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--teal) 0%, var(--matcha) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .recibo__acciones {
@@ -122,21 +156,23 @@
   justify-content: flex-end;
   margin-top: 24px;
   padding-top: 20px;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--border);
 }
 
 .recibo__btn-cerrar {
-  background: #eeeeee;
-  color: #333333;
-  border: none;
+  background: transparent;
+  color: var(--text2);
+  border: 1px solid var(--border2);
   cursor: pointer;
-  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
   font-weight: 600;
-  padding: 10px 20px;
+  padding: 9px 20px;
   border-radius: 6px;
-  transition: background 0.2s ease;
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
 }
 
 .recibo__btn-cerrar:hover {
-  background: #dddddd;
+  border-color: var(--text3);
+  color: var(--text1);
 }

@@ -1,98 +1,105 @@
 .tabla-wrapper {
   overflow-x: auto;
-  border-radius: 6px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  box-shadow: 0 0 60px rgba(45, 212, 191, 0.04);
 }
 
 .tabla {
   width: 100%;
   border-collapse: collapse;
-  background: #ffffff;
-  font-size: 14px;
+  background: var(--surface);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
 }
 
 .tabla thead tr {
-  background: #1a1a2e;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border2);
 }
 
 .tabla thead th {
-  color: #ffffff;
+  color: var(--text3);
   padding: 12px 16px;
   text-align: left;
-  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
 .tabla tbody td {
-  padding: 11px 16px;
-  border-bottom: 1px solid #e0e0e0;
-  color: #333333;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text1);
+  font-variant-numeric: tabular-nums;
+  transition: background 0.25s var(--ease);
 }
 
-.tabla tbody tr:last-child td {
-  border-bottom: none;
+.tabla tbody tr:last-child td { border-bottom: none; }
+
+.fila-par td   { background: var(--surface);  }
+.fila-impar td { background: transparent; }
+
+.tabla tbody tr:hover td {
+  background: rgba(45, 212, 191, 0.04);
 }
 
-.fila-par td {
-  background: #ffffff;
-}
-
-.fila-impar td {
-  background: #f9f9f9;
-}
-
+/* action buttons */
 .tabla__acciones {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   align-items: center;
 }
 
 .btn-editar,
-.btn-eliminar {
-  border: none;
+.btn-eliminar,
+.btn-recibo {
+  border: 1px solid;
+  background: transparent;
   cursor: pointer;
-  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
   font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 4px;
-  transition: filter 0.2s ease;
-  color: #ffffff;
+  letter-spacing: 0.04em;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease),
+              border-color 0.25s var(--ease), box-shadow 0.25s var(--ease),
+              transform 0.2s var(--ease-spring);
+  white-space: nowrap;
 }
 
-.btn-editar {
-  background: #4a9eff;
-}
+.btn-editar  { color: var(--teal);  border-color: var(--border2); }
+.btn-eliminar { color: var(--red);  border-color: var(--border2); }
+.btn-recibo  { color: var(--matcha); border-color: var(--border2); }
 
 .btn-editar:hover {
-  filter: brightness(0.85);
-}
-
-.btn-eliminar {
-  background: #e53e3e;
+  background: rgba(45, 212, 191, 0.08);
+  border-color: var(--teal3);
+  box-shadow: 0 0 16px rgba(45, 212, 191, 0.15);
+  transform: translateY(-1px);
 }
 
 .btn-eliminar:hover {
-  filter: brightness(0.85);
-}
-
-.btn-recibo {
-  background: #38a169;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 4px;
-  transition: filter 0.2s ease;
+  background: var(--red-bg);
+  border-color: var(--red);
+  box-shadow: 0 0 16px rgba(248, 113, 113, 0.12);
+  transform: translateY(-1px);
 }
 
 .btn-recibo:hover {
-  filter: brightness(0.85);
+  background: rgba(109, 184, 138, 0.08);
+  border-color: var(--matcha2);
+  box-shadow: 0 0 16px rgba(109, 184, 138, 0.15);
+  transform: translateY(-1px);
 }
 
+/* empty state */
 .tabla__vacia {
-  background: #ffffff !important;
+  background: transparent !important;
   padding: 0 !important;
 }
 
@@ -100,24 +107,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 48px 20px;
-  color: #888888;
+  padding: 72px 20px;
+  color: var(--text3);
 }
 
 .tabla__vacia-icono {
-  font-size: 40px;
-  margin-bottom: 12px;
+  font-size: 28px;
+  margin-bottom: 14px;
+  opacity: 0.3;
 }
 
 .tabla__vacia-inner p {
   margin: 0;
-  font-size: 15px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
 }
 
 @media (max-width: 768px) {
-  .btn-editar,
-  .btn-eliminar {
-    font-size: 12px;
-    padding: 5px 10px;
+  .btn-editar, .btn-eliminar, .btn-recibo {
+    font-size: 10px;
+    padding: 4px 8px;
   }
 }

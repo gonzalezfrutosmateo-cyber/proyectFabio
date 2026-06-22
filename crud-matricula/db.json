@@ -67,6 +67,12 @@
       "nombre": "Diseño de ambientes",
       "arancel": "200000",
       "id": "QjTOWpfzte8"
+    },
+    {
+      "codigo": "CAR777",
+      "nombre": "Ingenieria italiana",
+      "arancel": "50",
+      "id": "FLKWpIM0L8Y"
     }
   ],
   "matriculas": [

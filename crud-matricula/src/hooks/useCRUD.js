@@ -5,7 +5,6 @@ const BASE = 'http://localhost:3001';
 export function useCRUD(endpoint) {
   const [datos, setDatos] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const fetchDatos = useCallback(async () => {
     try {
       setLoading(true);

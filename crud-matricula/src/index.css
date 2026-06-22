@@ -1,13 +1,81 @@
+/* ─── dark theme (default) ──────────────────────────────── */
+:root,
+html[data-theme="dark"] {
+  --bg:          #060e0b;
+  --surface:     #0a1812;
+  --surface2:    #0f2219;
+
+  --border:      #162c1f;
+  --border2:     #1e3d2c;
+
+  --teal:        #2dd4bf;
+  --teal2:       #14b8a6;
+  --teal3:       #0d9488;
+
+  --matcha:      #6db88a;
+  --matcha2:     #4d9669;
+  --matcha3:     #a8ccb0;
+
+  --text1:       #e4f4ee;
+  --text2:       #7db89a;
+  --text3:       #3a6250;
+
+  --red:         #f87171;
+  --red-bg:      #1a0808;
+  --green:       #4ade80;
+
+  --navbar-bg:   rgba(6, 14, 11, 0.85);
+  --menu-bg:     rgba(6, 14, 11, 0.97);
+
+  --ease:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ─── light theme ───────────────────────────────────────── */
+html[data-theme="light"] {
+  --bg:          #f2f8f5;
+  --surface:     #ffffff;
+  --surface2:    #e6f2eb;
+
+  --border:      #ccdfd4;
+  --border2:     #aecfba;
+
+  --teal:        #0d9488;
+  --teal2:       #0f766e;
+  --teal3:       #115e59;
+
+  --matcha:      #4a7c5c;
+  --matcha2:     #3a6249;
+  --matcha3:     #2a4d38;
+
+  --text1:       #0c1f15;
+  --text2:       #2d5e42;
+  --text3:       #6a9b7e;
+
+  --red:         #dc2626;
+  --red-bg:      #fef2f2;
+  --green:       #16a34a;
+
+  --navbar-bg:   rgba(242, 248, 245, 0.88);
+  --menu-bg:     rgba(242, 248, 245, 0.98);
+}
+
+/* ─── base ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  transition: background 0.35s var(--ease), color 0.35s var(--ease);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--text1);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
 }
