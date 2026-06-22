@@ -1,0 +1,142 @@
+.recibo-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.recibo {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 36px 40px 28px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+  font-family: inherit;
+}
+
+.recibo__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.recibo__institucion {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recibo__logo-text {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+
+.recibo__subtitulo {
+  font-size: 11px;
+  color: #888888;
+}
+
+.recibo__titulo-bloque {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recibo__titulo {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #1a1a2e;
+  letter-spacing: 0.06em;
+}
+
+.recibo__numero {
+  font-size: 13px;
+  font-weight: 700;
+  color: #4a9eff;
+}
+
+.recibo__divider {
+  height: 1px;
+  background: #e8e8e8;
+  margin: 16px 0;
+}
+
+.recibo__seccion-titulo {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888888;
+  margin-bottom: 12px;
+}
+
+.recibo__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+  margin-bottom: 4px;
+}
+
+.recibo__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.recibo__campo--total {
+  margin-top: 8px;
+}
+
+.recibo__etiqueta {
+  font-size: 11px;
+  color: #999999;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.recibo__valor {
+  font-size: 14px;
+  color: #1a1a2e;
+  font-weight: 600;
+}
+
+.recibo__campo--total .recibo__valor {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.recibo__acciones {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.recibo__btn-cerrar {
+  background: #eeeeee;
+  color: #333333;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.recibo__btn-cerrar:hover {
+  background: #dddddd;
+}

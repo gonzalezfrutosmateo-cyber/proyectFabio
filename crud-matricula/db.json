@@ -1,0 +1,111 @@
+{
+  "alumnos": [
+    {
+      "id": "1",
+      "codigo": "ALU001",
+      "nombre": "María",
+      "apellido": "García",
+      "direccion": "Av. Corrientes 1234",
+      "telefono": "11-1234-5678"
+    },
+    {
+      "id": "2",
+      "codigo": "ALU002",
+      "nombre": "Juan",
+      "apellido": "López",
+      "direccion": "Calle Falsa 456",
+      "telefono": "11-9876-5432"
+    },
+    {
+      "codigo": "ALU003",
+      "nombre": "Ana",
+      "apellido": "Martínes",
+      "direccion": "San Martín 789",
+      "telefono": "11-5555-4444",
+      "id": "3"
+    }
+  ],
+  "secretarias": [
+    {
+      "id": "1",
+      "codigo": "SEC001",
+      "nombre": "Laura",
+      "apellido": "Rodríguez",
+      "direccion": "Belgrano 321",
+      "telefono": "11-2222-3333"
+    },
+    {
+      "id": "2",
+      "codigo": "SEC002",
+      "nombre": "Carlos",
+      "apellido": "Fernández",
+      "direccion": "Rivadavia 654",
+      "telefono": "11-4444-5555"
+    }
+  ],
+  "carreras": [
+    {
+      "id": "1",
+      "codigo": "CAR001",
+      "nombre": "Ingeniería Informática",
+      "arancel": 15000
+    },
+    {
+      "id": "2",
+      "codigo": "CAR002",
+      "nombre": "Administración de Empresas",
+      "arancel": 12000
+    },
+    {
+      "id": "3",
+      "codigo": "CAR003",
+      "nombre": "Diseño Gráfico",
+      "arancel": 18000
+    },
+    {
+      "codigo": "CAR004",
+      "nombre": "Diseño de ambientes",
+      "arancel": "200000",
+      "id": "QjTOWpfzte8"
+    }
+  ],
+  "matriculas": [
+    {
+      "id": "1",
+      "numero": "MAT001",
+      "fecha": "2025-03-01",
+      "codigoAlumno": "ALU001",
+      "codigoSecretaria": "SEC001",
+      "codigoCarrera": "CAR001",
+      "numeroRecibo": "REC001",
+      "fechaRecibo": "2025-03-01",
+      "total": 15000,
+      "codigoConcepto": "CONC001"
+    },
+    {
+      "id": "2",
+      "numero": "MAT002",
+      "fecha": "2025-03-05",
+      "codigoAlumno": "ALU002",
+      "codigoSecretaria": "SEC002",
+      "codigoCarrera": "CAR002",
+      "numeroRecibo": "REC002",
+      "fechaRecibo": "2025-03-05",
+      "total": 12000,
+      "codigoConcepto": "CONC001"
+    },
+    {
+      "numero": "MAT003",
+      "fecha": "2026-06-22",
+      "codigoAlumno": "ALU002",
+      "codigoSecretaria": "SEC002",
+      "codigoCarrera": "CAR004",
+      "numeroRecibo": "8080",
+      "fechaRecibo": "2026-06-23",
+      "total": "200000",
+      "codigoConcepto": "CODI6025",
+      "id": "4aPmbcJ04IA"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

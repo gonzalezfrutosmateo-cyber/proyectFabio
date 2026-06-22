@@ -1,0 +1,5 @@
+[
+  { "id": 1, "codigo": "CAR001", "nombre": "Ingeniería Informática" },
+  { "id": 2, "codigo": "CAR002", "nombre": "Administración de Empresas" },
+  { "id": 3, "codigo": "CAR003", "nombre": "Diseño Gráfico" }
+]

@@ -1,0 +1,158 @@
+.page {
+  min-height: calc(100vh - 70px);
+  margin-top: 70px;
+  background: #f5f5f5;
+  padding: 40px 60px;
+}
+
+.page__header {
+  margin-bottom: 6px;
+}
+
+.page__title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+
+.page__subtitle {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #666666;
+}
+
+.page__count {
+  font-size: 13px;
+  color: #666666;
+  margin: 10px 0 0;
+}
+
+.page__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 20px 0 16px;
+  flex-wrap: wrap;
+}
+
+.page__busqueda-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.page__busqueda-icono {
+  position: absolute;
+  left: 12px;
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.page__busqueda {
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  padding: 8px 14px 8px 36px;
+  width: 280px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  background: #ffffff;
+}
+
+.page__busqueda:focus {
+  border-color: #4a9eff;
+}
+
+.page__filtro-estado {
+  display: flex;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.page__filtro-btn {
+  background: #ffffff;
+  border: none;
+  border-right: 1px solid #dddddd;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  color: #555555;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.page__filtro-btn:last-child {
+  border-right: none;
+}
+
+.page__filtro-btn:hover {
+  background: #f0f0f0;
+}
+
+.page__filtro-btn.activo.page__filtro-btn--todas {
+  background: #1a1a2e;
+  color: #ffffff;
+}
+
+.page__filtro-btn.activo.page__filtro-btn--vigentes {
+  background: #38a169;
+  color: #ffffff;
+}
+
+.page__filtro-btn.activo.page__filtro-btn--vencidas {
+  background: #e53e3e;
+  color: #ffffff;
+}
+
+.page__btn-agregar {
+  background: #4a9eff;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 11px 22px;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.page__btn-agregar:hover {
+  background: #2f86ed;
+}
+
+.page__loading {
+  text-align: center;
+  padding: 48px;
+  color: #888888;
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 20px 16px;
+  }
+
+  .page__busqueda {
+    width: 100%;
+  }
+
+  .page__busqueda-wrapper {
+    width: 100%;
+  }
+
+  .page__btn-agregar {
+    width: 100%;
+    text-align: center;
+  }
+
+  .page__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
