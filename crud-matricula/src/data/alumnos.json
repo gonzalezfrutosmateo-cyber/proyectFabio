@@ -1,5 +1,0 @@
-[
-  { "id": 1, "codigo": "ALU001", "nombre": "María", "apellido": "García", "direccion": "Av. Corrientes 1234", "telefono": "11-1234-5678" },
-  { "id": 2, "codigo": "ALU002", "nombre": "Juan", "apellido": "López", "direccion": "Calle Falsa 456", "telefono": "11-9876-5432" },
-  { "id": 3, "codigo": "ALU003", "nombre": "Ana", "apellido": "Martínez", "direccion": "San Martín 789", "telefono": "11-5555-4444" }
-]

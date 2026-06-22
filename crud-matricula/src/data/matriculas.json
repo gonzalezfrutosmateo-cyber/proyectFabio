@@ -1,4 +1,0 @@
-[
-  { "id": 1, "numero": "MAT001", "fecha": "2025-03-01", "codigoAlumno": "ALU001", "codigoSecretaria": "SEC001", "codigoCarrera": "CAR001", "numeroRecibo": "REC001", "fechaRecibo": "2025-03-01", "total": 15000, "codigoConcepto": "CONC001" },
-  { "id": 2, "numero": "MAT002", "fecha": "2025-03-05", "codigoAlumno": "ALU002", "codigoSecretaria": "SEC002", "codigoCarrera": "CAR002", "numeroRecibo": "REC002", "fechaRecibo": "2025-03-05", "total": 15000, "codigoConcepto": "CONC001" }
-]
