@@ -106,6 +106,5 @@
       "codigoConcepto": "CODI6025",
       "id": "4aPmbcJ04IA"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }

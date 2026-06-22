@@ -16,9 +16,11 @@ function TablaGenerica({ columnas, datos, onEditar, onEliminar, accionesExtra = 
           {datos.length > 0 ? (
             datos.map((item, index) => (
               <tr key={item.id} className={index % 2 === 0 ? 'fila-par' : 'fila-impar'}>
+                {/* Una celda por columna definida en la página */}
                 {columnas.map((col) => (
                   <td key={col.key}>{item[col.key]}</td>
                 ))}
+                {/* Acciones: las extra de la página + editar/eliminar */}
                 <td className="tabla__acciones">
                   {accionesExtra.map(({ label, onClick, className }) => (
                     <button key={label} className={className} onClick={() => onClick(item)}>{label}</button>
@@ -32,7 +34,6 @@ function TablaGenerica({ columnas, datos, onEditar, onEliminar, accionesExtra = 
             <tr>
               <td colSpan={columnas.length + 1} className="tabla__vacia">
                 <div className="tabla__vacia-inner">
-                  <span className="tabla__vacia-icono">📭</span>
                   <p>No se encontraron registros</p>
                 </div>
               </td>

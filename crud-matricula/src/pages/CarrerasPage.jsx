@@ -5,12 +5,14 @@ import Modal from '../components/Modal';
 import Toast from '../components/Toast';
 import './Page.css';
 
+// Columnas que muestra la tabla
 const columnas = [
   { key: 'codigo',  label: 'Código' },
   { key: 'nombre',  label: 'Nombre de carrera' },
   { key: 'arancel', label: 'Arancel $' },
 ];
 
+// Campos del formulario (tipo define la validación en el Modal)
 const campos = [
   { key: 'codigo',  label: 'Código',           tipo: 'code'   },
   { key: 'nombre',  label: 'Nombre de carrera', tipo: 'name'   },
@@ -27,29 +29,32 @@ export default function CarrerasPage() {
   const mostrarToast = (mensaje) => setToast({ visible: true, mensaje });
   const ocultarToast = useCallback(() => setToast({ visible: false, mensaje: '' }), []);
 
+  // Filtra por el texto del buscador (en cualquier columna)
   const datosFiltrados = datos.filter((item) =>
     Object.values(item).some((valor) =>
       String(valor).toLowerCase().includes(busqueda.toLowerCase())
     )
   );
 
+  // Abrir modal: sin item = alta, con item = edición
   const handleAgregar = () => { setItemEditando(null); setModalAbierto(true); };
   const handleEditar = (item) => { setItemEditando(item); setModalAbierto(true); };
 
   const handleEliminar = (id) => {
     if (window.confirm('¿Estás seguro de que querés eliminar este registro?')) {
       eliminar(id);
-      mostrarToast('🗑️ Registro eliminado');
+      mostrarToast('Registro eliminado');
     }
   };
 
+  // Guardar: si había item editamos, si no agregamos
   const handleGuardar = (datos) => {
     if (itemEditando) {
       editar(itemEditando.id, datos);
-      mostrarToast('✅ Registro actualizado correctamente');
+      mostrarToast('Registro actualizado correctamente');
     } else {
       agregar(datos);
-      mostrarToast('✅ Registro agregado correctamente');
+      mostrarToast('Registro agregado correctamente');
     }
     setModalAbierto(false);
   };
@@ -66,7 +71,6 @@ export default function CarrerasPage() {
 
       <div className="page__toolbar">
         <div className="page__busqueda-wrapper">
-          <span className="page__busqueda-icono">🔍</span>
           <input type="text" className="page__busqueda" placeholder="Buscar..."
             value={busqueda} onChange={(e) => setBusqueda(e.target.value)} />
         </div>

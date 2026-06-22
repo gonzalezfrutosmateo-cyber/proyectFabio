@@ -3,6 +3,7 @@ import './ReciboModal.css';
 function ReciboModal({ isOpen, onClose, matricula }) {
   if (!isOpen || !matricula) return null;
 
+  // Formatea el total como moneda argentina (ej: $ 15.000,00)
   const totalFormateado = Number(matricula.total).toLocaleString('es-AR', {
     style: 'currency', currency: 'ARS',
   });

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './Modal.css';
 
+// Reglas por tipo de campo: tipo de input, regex de validación y mensaje de error
 const VALIDACIONES = {
   name:    { inputType: 'text',   regex: /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s\-]+$/,          mensajeRegex: 'Solo se permiten letras, espacios y guiones' },
   code:    { inputType: 'text',   regex: /^[a-zA-Z0-9]+$/,                            mensajeRegex: 'Solo letras y números, sin espacios ni símbolos' },
@@ -13,6 +14,7 @@ const VALIDACIONES = {
   readonly:{ inputType: 'text',   regex: null, mensajeRegex: null },
 };
 
+// Devuelve el texto de error de un campo, o null si es válido
 function validarCampo(tipo, valor) {
   if (tipo === 'readonly') return null;
 
@@ -37,6 +39,7 @@ function Modal({ isOpen, onClose, onGuardar, titulo, campos, datosIniciales, cal
   const [errores, setErrores] = useState({});
   const [touched, setTouched] = useState({});
 
+  // Al abrir: precarga el form (vacío si es alta, con datos si es edición)
   useEffect(() => {
     if (isOpen) {
       const inicial = {};
@@ -62,11 +65,13 @@ function Modal({ isOpen, onClose, onGuardar, titulo, campos, datosIniciales, cal
     }
   };
 
+  // Al salir del campo: lo marca como "tocado" y valida
   const handleBlur = (key, tipo) => {
     setTouched((prev) => ({ ...prev, [key]: true }));
     setErrores((prev) => ({ ...prev, [key]: validarCampo(tipo, form[key]) }));
   };
 
+  // Al enviar: valida todos los campos y solo guarda si no hay errores
   const handleSubmit = (e) => {
     e.preventDefault();
     const nuevosErrores = {};
@@ -90,7 +95,7 @@ function Modal({ isOpen, onClose, onGuardar, titulo, campos, datosIniciales, cal
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal__header">
           <h3 className="modal__titulo">{titulo}</h3>
-          <button type="button" className="modal__cerrar" onClick={onClose} aria-label="Cerrar">✕</button>
+          <button type="button" className="modal__cerrar" onClick={onClose} aria-label="Cerrar">X</button>
         </div>
 
         <form onSubmit={handleSubmit} noValidate>
@@ -137,7 +142,7 @@ function Modal({ isOpen, onClose, onGuardar, titulo, campos, datosIniciales, cal
                   )}
 
                   {tieneError && (
-                    <span className="modal__error-msg">⚠ {errores[campo.key]}</span>
+                    <span className="modal__error-msg">{errores[campo.key]}</span>
                   )}
                 </div>
               );

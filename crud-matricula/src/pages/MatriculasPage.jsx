@@ -6,6 +6,7 @@ import Toast from '../components/Toast';
 import ReciboModal from '../components/ReciboModal';
 import './Page.css';
 
+// Columnas que muestra la tabla
 const columnas = [
   { key: 'numero',           label: 'N° Matrícula' },
   { key: 'fecha',            label: 'Fecha' },
@@ -16,6 +17,7 @@ const columnas = [
 ];
 
 export default function MatriculasPage() {
+  // Datos relacionados: se usan para los selects del formulario
   const { datos: alumnos }     = useCRUD('/alumnos');
   const { datos: secretarias } = useCRUD('/secretarias');
   const { datos: carreras }    = useCRUD('/carreras');
@@ -32,7 +34,8 @@ export default function MatriculasPage() {
   const mostrarToast = (mensaje) => setToast({ visible: true, mensaje });
   const ocultarToast = useCallback(() => setToast({ visible: false, mensaje: '' }), []);
 
-  // Campos construidos dinámicamente para tener las opciones relacionadas
+  // Campos del formulario, con useMemo para rearmar los selects cuando
+  // llegan los datos relacionados (alumnos, secretarias, carreras)
   const campos = useMemo(() => [
     { key: 'numero',           label: 'N° Matrícula',     tipo: 'code'   },
     { key: 'fecha',            label: 'Fecha',             tipo: 'date'   },
@@ -54,6 +57,7 @@ export default function MatriculasPage() {
     { key: 'codigoConcepto', label: 'Código Concepto', tipo: 'code'    },
   ], [alumnos, secretarias, carreras]);
 
+  // Autocompleta el total con el arancel de la carrera elegida
   const calcularCampos = useCallback((form) => {
     const carrera = carreras.find((c) => c.codigo === form.codigoCarrera);
     return carrera ? { total: carrera.arancel } : {};
@@ -62,6 +66,7 @@ export default function MatriculasPage() {
   const hoy = new Date();
   hoy.setHours(0, 0, 0, 0);
 
+  // Filtra primero por estado (vigente/vencida según la fecha) y luego por búsqueda
   const datosFiltrados = datos
     .filter((item) => {
       if (filtroEstado === 'todas') return true;
@@ -74,6 +79,7 @@ export default function MatriculasPage() {
       )
     );
 
+  // Abrir modal: sin item = alta, con item = edición
   const handleAgregar = () => { setItemEditando(null); setModalAbierto(true); };
   const handleEditar = (item) => { setItemEditando(item); setModalAbierto(true); };
   const handleVerRecibo = (item) => { setMatriculaRecibo(item); setReciboAbierto(true); };
@@ -81,23 +87,25 @@ export default function MatriculasPage() {
   const handleEliminar = (id) => {
     if (window.confirm('¿Estás seguro de que querés eliminar este registro?')) {
       eliminar(id);
-      mostrarToast('🗑️ Registro eliminado');
+      mostrarToast('Registro eliminado');
     }
   };
 
+  // Guardar: si había item editamos, si no agregamos
   const handleGuardar = (datos) => {
     if (itemEditando) {
       editar(itemEditando.id, datos);
-      mostrarToast('✅ Registro actualizado correctamente');
+      mostrarToast('Registro actualizado correctamente');
     } else {
       agregar(datos);
-      mostrarToast('✅ Registro agregado correctamente');
+      mostrarToast('Registro agregado correctamente');
     }
     setModalAbierto(false);
   };
 
+  // Botón extra de la tabla, propio de matrículas
   const accionesExtra = [
-    { label: '🧾 Ver Recibo', onClick: handleVerRecibo, className: 'btn-recibo' },
+    { label: 'Ver Recibo', onClick: handleVerRecibo, className: 'btn-recibo' },
   ];
 
   return (
@@ -112,7 +120,6 @@ export default function MatriculasPage() {
 
       <div className="page__toolbar">
         <div className="page__busqueda-wrapper">
-          <span className="page__busqueda-icono">🔍</span>
           <input type="text" className="page__busqueda" placeholder="Buscar..."
             value={busqueda} onChange={(e) => setBusqueda(e.target.value)} />
         </div>

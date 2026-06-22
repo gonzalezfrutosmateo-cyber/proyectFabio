@@ -24,6 +24,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Navbar />
+        {/* Rutas: cada path monta la página de su entidad */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/alumnos" element={<AlumnosPage />} />
