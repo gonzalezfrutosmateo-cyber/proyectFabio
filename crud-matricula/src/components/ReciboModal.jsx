@@ -3,10 +3,6 @@ import './ReciboModal.css';
 function ReciboModal({ isOpen, onClose, matricula }) {
   if (!isOpen || !matricula) return null;
 
-  const hoy = new Date().toLocaleDateString('es-AR', {
-    day: '2-digit', month: '2-digit', year: 'numeric',
-  });
-
   const totalFormateado = Number(matricula.total).toLocaleString('es-AR', {
     style: 'currency', currency: 'ARS',
   });
@@ -15,7 +11,6 @@ function ReciboModal({ isOpen, onClose, matricula }) {
     <div className="recibo-overlay" onClick={onClose}>
       <div className="recibo" onClick={(e) => e.stopPropagation()}>
 
-        {/* Cabecera */}
         <div className="recibo__header">
           <div className="recibo__institucion">
             <span className="recibo__logo-text">MatriculaSystem</span>
@@ -29,7 +24,6 @@ function ReciboModal({ isOpen, onClose, matricula }) {
 
         <div className="recibo__divider" />
 
-        {/* Datos de la matrícula */}
         <div className="recibo__seccion-titulo">Datos de la Matrícula</div>
         <div className="recibo__grid">
           <div className="recibo__campo">
@@ -52,7 +46,6 @@ function ReciboModal({ isOpen, onClose, matricula }) {
 
         <div className="recibo__divider" />
 
-        {/* Datos del recibo */}
         <div className="recibo__seccion-titulo">Datos del Recibo</div>
         <div className="recibo__grid">
           <div className="recibo__campo">
@@ -73,27 +66,12 @@ function ReciboModal({ isOpen, onClose, matricula }) {
           </div>
         </div>
 
-        {/* Total */}
-        <div className="recibo__total-bloque">
-          <span className="recibo__total-label">TOTAL ABONADO</span>
-          <span className="recibo__total-valor">{totalFormateado}</span>
-        </div>
-
         <div className="recibo__divider" />
 
-        {/* Firma */}
-        <div className="recibo__firma-zona">
-          <div className="recibo__firma">
-            <div className="recibo__firma-linea" />
-            <span>Firma y sello institución</span>
-          </div>
-          <div className="recibo__firma">
-            <div className="recibo__firma-linea" />
-            <span>Firma del alumno</span>
-          </div>
+        <div className="recibo__campo recibo__campo--total">
+          <span className="recibo__etiqueta">TOTAL ABONADO</span>
+          <span className="recibo__valor">{totalFormateado}</span>
         </div>
-
-        <p className="recibo__emision">Emitido el {hoy}</p>
 
         <div className="recibo__acciones">
           <button className="recibo__btn-cerrar" onClick={onClose}>Cerrar</button>

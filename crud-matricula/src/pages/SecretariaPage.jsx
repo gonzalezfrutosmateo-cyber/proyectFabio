@@ -3,7 +3,6 @@ import { useCRUD } from '../hooks/useCRUD';
 import TablaGenerica from '../components/TablaGenerica';
 import Modal from '../components/Modal';
 import Toast from '../components/Toast';
-import datosIniciales from '../data/secretarias.json';
 import './Page.css';
 
 const columnas = [
@@ -23,7 +22,7 @@ const campos = [
 ];
 
 export default function SecretariaPage() {
-  const { datos, agregar, editar, eliminar } = useCRUD(datosIniciales);
+  const { datos, agregar, editar, eliminar, loading } = useCRUD('/secretarias');
   const [modalAbierto, setModalAbierto] = useState(false);
   const [itemEditando, setItemEditando] = useState(null);
   const [busqueda, setBusqueda] = useState('');
@@ -72,32 +71,23 @@ export default function SecretariaPage() {
       <div className="page__toolbar">
         <div className="page__busqueda-wrapper">
           <span className="page__busqueda-icono">🔍</span>
-          <input
-            type="text"
-            className="page__busqueda"
-            placeholder="Buscar..."
-            value={busqueda}
-            onChange={(e) => setBusqueda(e.target.value)}
-          />
+          <input type="text" className="page__busqueda" placeholder="Buscar..."
+            value={busqueda} onChange={(e) => setBusqueda(e.target.value)} />
         </div>
         <button className="page__btn-agregar" onClick={handleAgregar}>+ Agregar nuevo</button>
       </div>
 
-      <TablaGenerica
-        columnas={columnas}
-        datos={datosFiltrados}
-        onEditar={handleEditar}
-        onEliminar={handleEliminar}
-      />
+      {loading ? (
+        <p className="page__loading">Cargando...</p>
+      ) : (
+        <TablaGenerica columnas={columnas} datos={datosFiltrados}
+          onEditar={handleEditar} onEliminar={handleEliminar} />
+      )}
 
-      <Modal
-        isOpen={modalAbierto}
-        onClose={() => setModalAbierto(false)}
+      <Modal isOpen={modalAbierto} onClose={() => setModalAbierto(false)}
         onGuardar={handleGuardar}
         titulo={itemEditando ? 'Editar Secretaria' : 'Agregar Secretaria'}
-        campos={campos}
-        datosIniciales={itemEditando}
-      />
+        campos={campos} datosIniciales={itemEditando} />
 
       <Toast mensaje={toast.mensaje} visible={toast.visible} onOcultar={ocultarToast} />
     </div>

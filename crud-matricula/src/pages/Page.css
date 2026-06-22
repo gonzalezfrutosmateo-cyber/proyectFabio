@@ -126,6 +126,13 @@
   background: #2f86ed;
 }
 
+.page__loading {
+  text-align: center;
+  padding: 48px;
+  color: #888888;
+  font-size: 15px;
+}
+
 @media (max-width: 768px) {
   .page {
     padding: 20px 16px;
